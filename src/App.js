@@ -9,16 +9,34 @@ const App = () => {
 
   const [products, setProducts] = useState([]);
 
-  // useEffect initial render...
+  // state to check if data is loaded
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // state to store errors
+  const [error, setError] = useState(null);
+
+  // useEffect hook makes API call for fake products only when App.js mounts
   useEffect(() => {
-    // async IIFE...
-    (async() => {
-      // fetch raw data with API call...
-      const data = await fetch('https://fakestoreapi.com/products?limit=5')
-      // translate data into an array of products...
-      const fetchedProducts = data.json();
-      // set products with array of products
-      setProducts(fetchedProducts);
+    (async () => {
+      try {
+        // fetch both women's and men's clothing responses
+        const [clothingWomenResponse, clothingMenResponse] = await Promise.all([
+          fetch("https://fakestoreapi.com/products/category/women's clothing"),
+          fetch("https://fakestoreapi.com/products/category/men's clothing"),
+        ])
+
+        // filter out the promise
+        const clothingWomenProducts = await clothingWomenResponse.json()
+        const clothingMenProducts = await clothingMenResponse.json()
+
+        // set products with the filtered promise
+        setProducts([...clothingWomenProducts, ...clothingMenProducts]);
+        setIsLoaded(true);
+      } catch (error) {
+        // set error if there is any
+        setError(error);
+        setIsLoaded(true);
+      }
     })();
   }, [])
 
@@ -29,7 +47,13 @@ const App = () => {
         <Routes>
           {/* Create url paths with their corresponding components */}
           <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/products" element={
+            <Products 
+              isLoaded={isLoaded} 
+              products={products} 
+              error={error}
+            />
+          } />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
