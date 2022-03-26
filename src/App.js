@@ -40,6 +40,25 @@ const App = () => {
     })();
   }, [])
 
+  // shopping cart state to store items added to cart
+  const [shoppingCart, setShoppingCart] = useState([]);
+  // function to add item to cart
+  const addToCart = (item) => {
+    setShoppingCart([...shoppingCart, item]);
+  }
+
+  // function to handle change
+  const handleChange = (itemObject) => {
+    const index = shoppingCart.indexOf(itemObject);
+
+    // create shallow copy of shoppingCart array
+    const shoppingCartCopy = shoppingCart;
+    // replace itemObject with the mutated one in shoppingCartCopy
+    shoppingCartCopy[index] = itemObject;
+
+    setShoppingCart(shoppingCartCopy);
+  }
+
   return (
     <div className="flex flex-col h-[100vh] justify-stretch">
       <BrowserRouter>
@@ -52,9 +71,15 @@ const App = () => {
               isLoaded={isLoaded} 
               products={products} 
               error={error}
+              addToCart={addToCart}
             />
           } />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={
+            <Cart 
+              items={shoppingCart}
+              handleChange={handleChange}
+            />
+          } />
         </Routes>
       </BrowserRouter>
     </div>
