@@ -1,4 +1,5 @@
-import Card from '../components/Card';
+import uniqid from 'uniqid'
+import ProductCard from '../components/ProductCard';
 
 const Products = (props) => {
   const { products, isLoaded, error } = props;
@@ -6,7 +7,9 @@ const Products = (props) => {
   // render Loading screen if data hasn't loaded yet
   if (!isLoaded) {
     return (
-      <main className='flex-1 flex justify-center items-center 
+      <main 
+      data-testid='products'
+      className='flex-1 flex justify-center items-center 
       text-3xl text-gray-500'>
         Loading...
       </main>
@@ -14,7 +17,9 @@ const Products = (props) => {
   // render error if there was an error in fetching data
   } else if (error) {
     return (
-      <main className='flex-1 flex justify-center items-center
+      <main 
+      data-testid='products'
+      className='flex-1 flex justify-center items-center
       text-3xl text-gray-500'>
         Error: {error.message}
       </main>
@@ -25,15 +30,16 @@ const Products = (props) => {
       <main 
       className="flex-1 flex justify-center items-center py-6" 
       data-testid="products">
-        <div className='
-          grid 
-          gap-[2vmax] 
-          grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] 
-          auto-rows-[450px]
-          w-[80%]'
+        <div className='grid gap-[2vmax] w-[80%] auto-rows-[450px]
+        grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))]'
         >
           {products.map((product) => {
-            return <Card product={product}/>;
+            const key = uniqid();
+            return <ProductCard 
+              product={product} 
+              addToCart={props.addToCart} 
+              key={key}
+            />;
           })}
         </div>
       </main>
