@@ -1,10 +1,10 @@
-const Card = (props) => {
-  const { product } = props;
+const ProductCard = (props) => {
+  const { product, addToCart } = props;
   const { image } = product;
 
   // function that handles click by calling addToCart()
   const handleClick = () => {
-    
+    addToCart(product);
   }
 
   return (
@@ -15,10 +15,15 @@ const Card = (props) => {
       <div className="grid grid-rows-3 items-center">
         <h1 className="font-bold">{product.title}</h1>
         <p className="text-2xl text-right">{`$${product.price}`}</p>
-        <button className="bg-black text-pink-500 h-[100%] rounded-md">Add To Cart</button>
+        <button 
+          className="bg-black text-pink-500 h-[100%] rounded-md"
+          onClick={handleClick}
+        >
+          Add To Cart
+        </button>
       </div>
     </div>
   )
 }
 
-export default Card;
+export default ProductCard;
