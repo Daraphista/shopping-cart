@@ -45,7 +45,7 @@ const Cart = (props) => {
   return (
     <main className="flex-1 flex flex-col items-center py-10 gap-6" data-testid="cart">
       <h1 className="text-3xl font-bold">Your Shopping Cart</h1>
-      <div className="grid gap-6">
+      <div className="grid gap-6 w-[50%]">
         {items.map(item => {
           const key = uniqid();
           return (
@@ -57,9 +57,10 @@ const Cart = (props) => {
           )
         })}
       </div>
-      <div>
-        <h1>{`Total: $${totalPrice}`}</h1>
-      </div>
+      <button className="bg-black text-pink-500 text-3xl rounded-lg
+        p-6 w-[50%]">
+        {`Checkout $${totalPrice}`}
+      </button>
     </main>
   )
 }
