@@ -44,9 +44,24 @@ const App = () => {
   const [shoppingCart, setShoppingCart] = useState([]);
   // function to add item to cart
   const addToCart = (item) => {
-    item.quantity = 1;
-    setShoppingCart([...shoppingCart, item]);
+    // evaluate if item is in the cart
+    const itemNotInCart = shoppingCart.every(cartItem => cartItem.title !== item.title);
+    // if is not in the cart...
+    if(itemNotInCart) {
+      // add it to the cart with a quantity of 1
+      item.quantity = 1;
+      setShoppingCart([...shoppingCart, item]);
+    } else { // if it is in the cart...
+      // get the item
+      let duplicatedItem;
+      shoppingCart.forEach(itemInCart => {
+        duplicatedItem = (itemInCart.title === item.title) ? itemInCart : null;
+      })
+      // increment the quantity of the item in the cart
+      duplicatedItem.quantity += 1;
+    }
   }
+  
 
   return (
     <div className="flex flex-col h-[100vh] justify-stretch">
