@@ -44,19 +44,8 @@ const App = () => {
   const [shoppingCart, setShoppingCart] = useState([]);
   // function to add item to cart
   const addToCart = (item) => {
+    item.quantity = 1;
     setShoppingCart([...shoppingCart, item]);
-  }
-
-  // function to handle change
-  const handleChange = (itemObject) => {
-    const index = shoppingCart.indexOf(itemObject);
-
-    // create shallow copy of shoppingCart array
-    const shoppingCartCopy = shoppingCart;
-    // replace itemObject with the mutated one in shoppingCartCopy
-    shoppingCartCopy[index] = itemObject;
-
-    setShoppingCart(shoppingCartCopy);
   }
 
   return (
@@ -77,7 +66,6 @@ const App = () => {
           <Route path="/cart" element={
             <Cart 
               items={shoppingCart}
-              handleChange={handleChange}
             />
           } />
         </Routes>
