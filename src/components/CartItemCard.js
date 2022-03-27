@@ -5,8 +5,8 @@ const CartItemCard = (props) => {
   // destructure props
   const { product, handleChange } = props;
 
-  // state to store quantity
-  const [quantity, setQuantity] = useState(1);
+  // state to store initial quantity from quantity property from product prop
+  const [quantity, setQuantity] = useState(product.quantity);
 
   useEffect(() => {
     // add quantity property to object
