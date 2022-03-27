@@ -29,7 +29,7 @@ const CartItemCard = (props) => {
         <img className="w-[15vmin] object-contain" src={product.image} alt="lmao"></img>
       </div>
       <div className="grid grid-rows-3 items-center">
-        <h1 className="font-bold">{product.title}</h1>
+        <h1 className="font-bold text-center">{product.title}</h1>
         <p className="text-2xl text-right">{`$${product.price}`}</p>
         <form className="flex justify-center gap-2 h-[4vmin]">
           <button 
