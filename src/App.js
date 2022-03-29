@@ -61,7 +61,10 @@ const App = () => {
       duplicatedItem.quantity += 1;
     }
   }
-  
+
+  const liftChange = (itemsCopy) => {
+    setShoppingCart(itemsCopy);
+  }
 
   return (
     <div className="flex flex-col h-[100vh] justify-stretch">
@@ -81,6 +84,7 @@ const App = () => {
           <Route path="/cart" element={
             <Cart 
               items={shoppingCart}
+              liftChange={liftChange}
             />
           } />
         </Routes>
