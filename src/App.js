@@ -72,8 +72,8 @@ const App = () => {
         <Navbar />
         <Routes>
           {/* Create url paths with their corresponding components */}
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={
+          <Route path="/shopping-cart/" element={<Home />} />
+          <Route path="/shopping-cart/products" element={
             <Products 
               isLoaded={isLoaded} 
               products={products} 
@@ -81,7 +81,7 @@ const App = () => {
               addToCart={addToCart}
             />
           } />
-          <Route path="/cart" element={
+          <Route path="/shopping-cart/cart" element={
             <Cart 
               items={shoppingCart}
               liftChange={liftChange}
