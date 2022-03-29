@@ -7,13 +7,13 @@ const Navbar = () => {
       <ul className="flex w-[50%] justify-around text-3xl cursor-pointer">
         {/* Create links pointing to corresponding pages/routes */}
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/shopping-cart/">Home</Link>
         </li>
         <li>
-          <Link to="/products">Products</Link>
+          <Link to="/shopping-cart/products">Products</Link>
         </li>
         <li>
-          <Link to="/cart">Cart</Link>
+          <Link to="/shopping-cart/cart">Cart</Link>
         </li>
       </ul>
     </header>
