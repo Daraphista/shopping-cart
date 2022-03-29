@@ -16,8 +16,7 @@ const ProductCard = (props) => {
         <h1 className="font-bold">{product.title}</h1>
         <p className="text-2xl text-right">{`$${product.price}`}</p>
         <button 
-          className="bg-black text-pink-500 h-[100%] rounded-md
-          active:bg-neutral-900 hover:scale-95 transition"
+          className="bg-black text-pink-500 h-[100%] rounded-md hover:bg-neutral-900 active:bg-black"
           onClick={handleClick}
         >
           Add To Cart
