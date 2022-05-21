@@ -9,3 +9,4 @@
 - React Icons
 - uniqid
 - Tailwindcss
+- Fakestoreapi
