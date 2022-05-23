@@ -1,4 +1,5 @@
-# This is my Shopping Cart project that was assigned by The Odin Project.
+# E-commerce Mockup
+This project is a basic mockup of an e-commerce site. I used ReactJS, TailwindCSS, and Fakestoreapi to create it.
 
 ### Technologies:
 - HTML
@@ -10,3 +11,5 @@
 - uniqid
 - Tailwindcss
 - Fakestoreapi
+
+[Live Demo](https://daraphista.github.io/shopping-cart/)
